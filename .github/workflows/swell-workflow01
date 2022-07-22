@@ -19,7 +19,7 @@ defaults:
 
 jobs:
   Run-task-workflow:
-    if: ${{ github.actor == 'danholdaway' }}
+    if: ${{ github.actor == 'jardizzo' }}
     runs-on: self-hosted
     steps:
       - name: checkout
