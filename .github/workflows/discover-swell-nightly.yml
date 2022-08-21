@@ -1,0 +1,36 @@
+name: discover-swell-nightly
+
+on:
+  workflow_call:
+    inputs:
+      username:
+        required: false
+        type: string
+    secrets:
+      token:
+        required: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+
+  discover-run-nightly:
+  
+    runs-on: self-hosted
+    
+    steps:
+    
+      - name: build-swell
+        uses: actions/checkout@v3
+        with:
+          ref: develop
+          
+      - name: create-nightly-experiment
+        run: |
+          swell_create_experiment
+          
+      - name: launch-nightly-experiment
+        run: |
+          swell_launch_experiment --no-detach
